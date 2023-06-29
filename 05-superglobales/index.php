@@ -17,7 +17,7 @@
         // qu'une valeur existe
         $name = $_GET['name'] ?? 'John';
         $age = $_GET['age'] ?? null;
-        $age = (int) $age; // '40' devient 40 et toto devient 0
+        $age = (int) $age; // '40' devient 40 et toto devient 0 (caster)
         var_dump($age);
     ?>
 
@@ -31,15 +31,42 @@
         <p>Tu as <?= $age; ?> ans.</p>
     <?php } ?>
 
+    <h2>Formulaire en GET</h2>
     <form action="" method="get">
-        <input type="text" name="name" value="<?= $name; ?>">
-        <select name="age">
-            <?php for ($i = 18; $i <= 120; $i++) { ?>
-            <option <?= $i == $age ? 'selected' : ''; ?> value="<?= $i; ?>">
-                <?= $i; ?> ans
-            </option>
-            <?php } ?>
-        </select>
+        <div class="section">
+            <label for="name">Nom</label>
+            <input type="text" name="name" id="name" value="<?= $name; ?>">
+        </div>
+
+        <div class="section">
+            <label for="age">Âge</label>
+            <select name="age" id="age">
+                <?php for ($i = 18; $i <= 120; $i++) { ?>
+                <option <?= $i == $age ? 'selected' : ''; ?> value="<?= $i; ?>">
+                    <?= $i; ?> ans
+                </option>
+                <?php } ?>
+            </select>
+        </div>
+
+        <button>Envoyer</button>
+    </form>
+
+    <?php
+        // Avec $_POST, les données sont "cachées" dans la requête
+        var_dump($_POST);
+        $password = $_POST['password'] ?? null;
+        if ($password) {
+            echo "<p>Votre mot de passe: $password</p>";
+        }
+    ?>
+    <h2>Formulaire en POST</h2>
+    <form action="" method="post">
+        <div class="section">
+            <label for="password">Mot de passe</label>
+            <input type="password" name="password" id="password">
+        </div>
+
         <button>Envoyer</button>
     </form>
 </body>
