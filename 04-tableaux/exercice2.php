@@ -62,9 +62,9 @@
     <?php
         // @todo: Trouver une solution
         // array_column renvoie toutes les notes de tout le monde
-        // $bestNote = max(array_column($students, 'notes'));
+        $bestNote = max(array_merge(...array_column($students, 'notes')));
 
-        $bestNote = 0;
+        /* $bestNote = 0;
 
         foreach ($students as $student) {
             foreach ($student['notes'] as $note) {
@@ -72,7 +72,7 @@
                     $bestNote = $note;
                 }
             }
-        }
+        } */
 
         foreach ($students as $student) {
             if (in_array($bestNote, $student['notes'])) {
