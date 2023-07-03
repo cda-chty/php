@@ -30,6 +30,9 @@
     </div>
 
     <?php
+        $numbers = [1900, 1910, 1920, 2090, 2100];
+        $numbers = range(1900, 2100, 10);
+
         /**
          * Renvoie le mot "selected" si le booléen en paramètre est true.
          */
