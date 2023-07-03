@@ -60,8 +60,10 @@
 
     <h2>Quel(s) éléve(s) a(ont) la meilleure note ?</h2>
     <?php
-        // @todo: Trouver une solution
         // array_column renvoie toutes les notes de tout le monde
+        // [[1, 2], [3, 4]] (array_column)
+        // [1, 2], [3, 4] (...)
+        // [1, 2, 3, 4] (array_merge)
         $bestNote = max(array_merge(...array_column($students, 'notes')));
 
         /* $bestNote = 0;
