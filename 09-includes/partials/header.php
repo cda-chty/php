@@ -22,6 +22,7 @@ $title = isset($title) ? "$title - Shop" : 'Shop'; // Gérer le titre du documen
                 <div class="navbar-nav">
                     <a class="nav-link <?= pageName() === 'index' ? 'active' : ''; ?>" aria-current="page" href="index.php">Accueil</a>
                     <a class="nav-link <?= pageName() === 'contact' ? 'active' : ''; ?>" href="contact.php">Contact</a>
+                    <a class="nav-link <?= pageName() === 'exercice-form' ? 'active' : ''; ?>" href="exercice-form.php">Exercice formulaire</a>
                     <a class="nav-link <?= pageName() === 'a-propos' ? 'active' : ''; ?>" href="a-propos.php">A propos</a>
                 </div>
             </div>

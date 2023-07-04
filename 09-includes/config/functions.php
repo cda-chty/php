@@ -25,7 +25,7 @@ function validEmail(string $email): bool {
  */
 function validArray(array $data, array $valid): bool {
     foreach ($data as $item) {
-        if (!in_array($item, $valid)) {
+        if (!validValue($item, $valid)) {
             return false;
         } 
     }
@@ -34,8 +34,36 @@ function validArray(array $data, array $valid): bool {
 }
 
 /**
+ * Permet de valider une valeur dans un tableau.
+ */
+function validValue(?string $value, array $valid): bool {
+    return in_array($value, $valid);
+}
+
+/**
  * Permet d'afficher checked si une valeur est dans un tableau.
  */
 function checked(string $value, array $array): string {
     return in_array($value, $array) ? 'checked' : '';
+}
+
+/**
+ * Permet d'afficher selected si une condition est vraie.
+ */
+function selected(bool $condition): string {
+    return $condition ? 'selected' : '';
+}
+
+/**
+ * Permet de récupérer des données dans la requête post.
+ */
+function request($field, $default = null) {
+    return $_POST[$field] ?? $default;
+}
+
+/**
+ * Détermine si le formulaire est soumis.
+ */
+function submitted() {
+    return ! empty($_POST);
 }
