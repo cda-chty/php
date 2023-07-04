@@ -14,7 +14,7 @@ $title = isset($title) ? "$title - Shop" : 'Shop'; // Gérer le titre du documen
 <body>
     <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
         <div class="container">
-            <a class="navbar-brand" href="#">Shop</a>
+            <a class="navbar-brand" href="index.php">Shop</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
