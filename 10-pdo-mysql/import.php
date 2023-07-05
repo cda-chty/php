@@ -28,7 +28,9 @@ require 'config/functions.php';
 db()->query('
     SET FOREIGN_KEY_CHECKS = 0;
     TRUNCATE category;
-    TRUNCATE movies;
+    TRUNCATE movie;
+    TRUNCATE actor;
+    TRUNCATE joue_dans;
     SET FOREIGN_KEY_CHECKS = 1;
 ');
 
@@ -46,4 +48,19 @@ foreach ($movies as $movie) {
         movie (title, released_at, description, duration, cover, id_category)
         VALUES (:title, :released_at, :description, :duration, :cover, :id_category)');
     $query->execute($movie);
+}
+
+$actors = convertCsvToArray('exports/actors.csv');
+
+foreach ($actors as $actor) {
+    unset($actor['id_actor']);
+    $query = db()->prepare('INSERT INTO actor (name, firstname, birthday) VALUES (:name, :firstname, :birthday)');
+    $query->execute($actor);
+}
+
+$movieActors = convertCsvToArray('exports/movie_has_actor.csv');
+
+foreach ($movieActors as $movieActor) {
+    $query = db()->prepare('INSERT INTO joue_dans (id, id_actor) VALUES (:id_movie, :id_actor)');
+    $query->execute($movieActor);
 }
