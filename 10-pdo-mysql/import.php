@@ -28,10 +28,22 @@ require 'config/functions.php';
 db()->query('
     SET FOREIGN_KEY_CHECKS = 0;
     TRUNCATE category;
+    TRUNCATE movies;
     SET FOREIGN_KEY_CHECKS = 1;
 ');
 
 foreach ($categories as $category) {
     $query = db()->prepare('INSERT INTO category (name) VALUES (:name)');
     $query->execute($category); // ->execute(['name' => 'Action']);
+}
+
+// Refacto du code pour importer le CSV
+$movies = convertCsvToArray('exports/movies.csv');
+
+foreach ($movies as $movie) {
+    unset($movie['id_movie']); // Cette colonne ne sert pas
+    $query = db()->prepare('INSERT INTO
+        movie (title, released_at, description, duration, cover, id_category)
+        VALUES (:title, :released_at, :description, :duration, :cover, :id_category)');
+    $query->execute($movie);
 }
