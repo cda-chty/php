@@ -1,5 +1,5 @@
 <?php
-require __DIR__.'/../config/functions.php';
+require_once __DIR__.'/../config/functions.php';
 $title = isset($title) ? "$title - Films" : 'Films';
 ?>
 <!DOCTYPE html>
@@ -7,7 +7,7 @@ $title = isset($title) ? "$title - Films" : 'Films';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Films</title>
+    <title><?= $title; ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link href="style.css" rel="stylesheet">
 </head>
