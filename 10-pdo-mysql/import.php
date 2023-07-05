@@ -64,3 +64,5 @@ foreach ($movieActors as $movieActor) {
     $query = db()->prepare('INSERT INTO joue_dans (id, id_actor) VALUES (:id_movie, :id_actor)');
     $query->execute($movieActor);
 }
+
+echo 'Données importées avec succès.';
