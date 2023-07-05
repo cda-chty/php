@@ -41,3 +41,10 @@ function pageName() {
 
     return $name;
 }
+
+/**
+ * Permet de formatter une date US.
+ */
+function formatDate(string $date, string $format = 'd/m/Y') {
+    return date($format, strtotime($date));
+}
