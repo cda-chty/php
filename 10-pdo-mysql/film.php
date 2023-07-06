@@ -15,13 +15,22 @@ if (!$movie) {
     die();
 }
 
-// Les acteurs
+// Les acteurs SANS JOIN
 $query = db()->prepare('SELECT * FROM joue_dans WHERE id = :id');
 $query->execute(['id' => $id]);
 $actors = $query->fetchAll();
 
 $ids = implode(', ', array_column($actors, 'id_actor'));
-$actors = db()->query('SELECT * FROM actor WHERE id IN ('.$ids.')')->fetchAll();
+if ($ids) {
+    $actors = db()->query('SELECT * FROM actor WHERE id IN ('.$ids.')')->fetchAll();
+}
+
+// Les acteurs AVEC JOIN
+$query = db()->prepare('SELECT name, firstname FROM actor
+INNER JOIN joue_dans ON actor.id = joue_dans.id_actor
+WHERE joue_dans.id = :id'); // joue_dans.id représente l'id du film
+$query->execute(['id' => $id]);
+$actors = $query->fetchAll();
 
 $title = $movie['title'];
 require 'partials/header.php'; ?>
