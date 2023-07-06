@@ -34,7 +34,7 @@ function convertCsvToArray(string $file): array {
 /**
  * Renvoie le nom de la page actuelle.
  */
-function pageName() {
+function pageName(): string {
     $uri = $_SERVER['REQUEST_URI']; // /php/09-includes/contact.php
     $name = strrchr($uri, '/'); // /contact.php
     $name = substr($name, 1, -4); // contact
@@ -45,6 +45,6 @@ function pageName() {
 /**
  * Permet de formatter une date US.
  */
-function formatDate(string $date, string $format = 'd/m/Y') {
+function formatDate(string $date, string $format = 'd/m/Y'): string {
     return date($format, strtotime($date));
 }

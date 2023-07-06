@@ -3,7 +3,7 @@
 /**
  * Renvoie le nom de la page actuelle.
  */
-function pageName() {
+function pageName(): string {
     $uri = $_SERVER['REQUEST_URI']; // /php/09-includes/contact.php
     $name = strrchr($uri, '/'); // /contact.php
     $name = substr($name, 1, -4); // contact
@@ -57,13 +57,13 @@ function selected(bool $condition): string {
 /**
  * Permet de récupérer des données dans la requête post.
  */
-function request($field, $default = null) {
+function request(string $field, mixed $default = null): mixed {
     return $_POST[$field] ?? $default;
 }
 
 /**
  * Détermine si le formulaire est soumis.
  */
-function submitted() {
+function submitted(): bool {
     return ! empty($_POST);
 }
