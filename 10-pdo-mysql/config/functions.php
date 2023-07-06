@@ -48,3 +48,14 @@ function pageName(): string {
 function formatDate(string $date, string $format = 'd/m/Y'): string {
     return date($format, strtotime($date));
 }
+
+/**
+ * Permet de formatter une durée brut en minutes.
+ */
+function formatDuration(int $duration): string {
+    $hours = floor($duration / 60);
+    $minutes = $duration % 60;
+    $zero = ($minutes < 10) ? '0' : '';
+
+    return $hours.'h'.$zero.$minutes;
+}

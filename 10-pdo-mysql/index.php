@@ -15,7 +15,7 @@ $movies = db()->query('SELECT * FROM movie')->fetchAll();
                     <div class="card-body">
                         <h5 class="card-title"><?= $movie['title']; ?></h5>
                         <p><?= formatDate($movie['released_at']); ?></p>
-                        <a href="#" class="btn btn-primary">Voir le film</a>
+                        <a href="film.php?id=<?= $movie['id']; ?>" class="btn btn-primary">Voir le film</a>
                     </div>
                 </div>
             </div>
