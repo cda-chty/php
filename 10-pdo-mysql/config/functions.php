@@ -59,3 +59,12 @@ function formatDuration(int $duration): string {
 
     return $hours.'h'.$zero.$minutes;
 }
+
+/**
+ * Permet d'afficher une 404
+ */
+function show404(): void {
+    http_response_code(404);
+    require __DIR__.'/../404.php';
+    die();
+}

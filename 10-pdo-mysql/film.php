@@ -11,8 +11,7 @@ $movie = $query->fetch();
 
 // Si le film n'existe pas
 if (!$movie) {
-    var_dump(404);
-    die();
+    show404();
 }
 
 // Les acteurs SANS JOIN
