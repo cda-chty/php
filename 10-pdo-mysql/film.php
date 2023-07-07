@@ -31,6 +31,11 @@ WHERE joue_dans.id = :id'); // joue_dans.id représente l'id du film
 $query->execute(['id' => $id]);
 $actors = $query->fetchAll();
 
+// Les acteurs AVEC UNE SOUS REQUÊTE
+$query = db()->prepare('SELECT * FROM actor WHERE id IN (SELECT id_actor FROM joue_dans WHERE id = :id)');
+$query->execute(['id' => $id]);
+$actors = $query->fetchAll();
+
 $title = $movie['title'];
 require 'partials/header.php'; ?>
 
