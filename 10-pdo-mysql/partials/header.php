@@ -21,7 +21,7 @@ $title = isset($title) ? "$title - Films" : 'Films';
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                     <a class="nav-link <?= pageName() === 'index' ? 'active' : ''; ?>" aria-current="page" href="index.php">Accueil</a>
-                    <a class="nav-link <?= pageName() === 'contact' ? 'active' : ''; ?>" href="contact.php">Contact</a>
+                    <a class="nav-link <?= pageName() === 'film-ajout' ? 'active' : ''; ?>" href="film-ajout.php">Ajout</a>
                 </div>
             </div>
         </div>

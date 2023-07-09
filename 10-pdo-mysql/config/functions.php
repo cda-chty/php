@@ -68,3 +68,17 @@ function show404(): void {
     require __DIR__.'/../404.php';
     die();
 }
+
+/**
+ * Permet de nettoyer 🧹 les données utilisateurs.
+ */
+function sanitize(?string $value): string {
+    return trim(htmlspecialchars($value ?? ''));
+}
+
+/**
+ * Détermine si le formulaire est soumis.
+ */
+function submitted(): bool {
+    return ! empty($_POST);
+}
