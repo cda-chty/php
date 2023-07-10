@@ -5,7 +5,7 @@ require 'config/functions.php';
 $categories = db()->query('SELECT * FROM category')->fetchAll();
 
 // Récupérer les valeurs du formulaire
-$title = sanitize($_POST['title'] ?? null);
+$titleMovie = sanitize($_POST['title'] ?? null);
 $released_at = $_POST['released_at'] ?? null;
 $description = sanitize($_POST['description'] ?? null);
 $duration = $_POST['duration'] ?? null;
@@ -16,7 +16,7 @@ $errors = [];
 
 if (submitted()) {
     // Vérification des erreurs
-    if (strlen($title) === 0) {
+    if (strlen($titleMovie) === 0) {
         $errors['title'] = 'Le titre est obligatoire.';
     }
 
@@ -52,7 +52,7 @@ if (submitted()) {
         $query = db()->prepare('INSERT INTO movie (title, released_at, description, duration, cover, id_category)
             VALUES (:title, :released_at, :description, :duration, :cover, :category)');
         $query->execute([
-            'title' => $title,
+            'title' => $titleMovie,
             'released_at' => $released_at,
             'description' => $description,
             'duration' => $duration,
@@ -90,7 +90,7 @@ require 'partials/header.php'; ?>
             <form method="post">
                 <div class="mb-3">
                     <label for="title">Titre</label>
-                    <input type="text" name="title" id="title" class="form-control" value="<?= $title; ?>">
+                    <input type="text" name="title" id="title" class="form-control" value="<?= $titleMovie; ?>">
                 </div>
 
                 <div class="mb-3">
