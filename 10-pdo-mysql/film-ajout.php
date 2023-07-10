@@ -5,11 +5,11 @@ $categories = db()->query('SELECT * FROM category')->fetchAll();
 
 // Récupérer les valeurs du formulaire
 $title = sanitize($_POST['title'] ?? null);
-$released_at = sanitize($_POST['released_at'] ?? null);
+$released_at = $_POST['released_at'] ?? null;
 $description = sanitize($_POST['description'] ?? null);
-$duration = sanitize($_POST['duration'] ?? null);
+$duration = $_POST['duration'] ?? null;
 // $cover = $_FILES['cover'] ?? null;
-$category = sanitize($_POST['category'] ?? null);
+$category = $_POST['category'] ?? null;
 
 $errors = [];
 
@@ -20,10 +20,13 @@ if (submitted()) {
     }
 
     // Vérification de la date
-    if (!date_create($released_at)) {
+    $date = date_create($released_at); // new DateTime($released_at);
+    if (!$date || $date && $date->format('Y-m-d') !== $released_at) {
         $errors['released_at'] = 'La date est invalide.';
     }
 
+    // strlen('é') => 2
+    // mb_strlen('é') => 1
     if (mb_strlen($description) <= 5) {
         $errors['description'] = 'La description doit faire 5 caractères minimum.';
     }
@@ -72,7 +75,13 @@ if (submitted()) {
         <div class="offset-lg-3 col-lg-6">
             <h1>Ajouter un film</h1>
 
-            <?php var_dump($errors); ?>
+            <?php if (!empty($errors)) { ?>
+                <div class="alert alert-danger">
+                <?php foreach ($errors as $error) { ?>
+                    <p class="m-0"><?= $error; ?></p>
+                <?php } ?>
+                </div>
+            <?php } ?>
 
             <form method="post">
                 <div class="mb-3">
@@ -92,7 +101,7 @@ if (submitted()) {
 
                 <div class="mb-3">
                     <label for="duration">Durée</label>
-                    <input type="text" name="duration" id="duration" class="form-control" value="<?= $duration; ?>">
+                    <input type="number" name="duration" id="duration" class="form-control" value="<?= $duration; ?>">
                 </div>
 
                 <div class="mb-3">
