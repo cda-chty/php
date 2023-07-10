@@ -4,6 +4,7 @@ require 'vendor/autoload.php';
 
 use App\Car;
 use App\Cat;
+use App\ExoGeometry\Rectangle;
 
 $bianca = new Cat('Bianca');
 $bianca->setFur('noir')->setFur('blanc');
@@ -65,6 +66,16 @@ dump($bianca, $mina);
         $bmw->fillUp();
 
         dump($bmw);
+    ?>
+
+    <h2>Exercice Rectangle</h2>
+    <?php
+        $r = new Rectangle(10, 20);
+        echo $r->perimeter().'<br>'; // 60
+        echo $r->area().'<br>'; // 200
+        dump($r->isValid()); // true
+        $r2 = new Rectangle(-10, 20);
+        dump($r2->isValid()); // false
     ?>
 </body>
 </html>
