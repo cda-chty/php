@@ -1,4 +1,5 @@
-<?php require 'partials/header.php';
+<?php
+require 'config/functions.php';
 
 // Pour le select
 $categories = db()->query('SELECT * FROM category')->fetchAll();
@@ -58,10 +59,13 @@ if (submitted()) {
             'cover' => $cover,
             'category' => $category,
         ]);
+
+        $_SESSION['success'] = 'Votre film a été ajouté';
+        header('Location: index.php'); // Redirection vers une page
     }
 }
 
-?>
+require 'partials/header.php'; ?>
 
 <div class="container my-5">
     <nav class="my-5" aria-label="breadcrumb">

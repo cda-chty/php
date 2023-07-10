@@ -7,6 +7,9 @@ $movies = db()->query('SELECT * FROM movie')->fetchAll();
 ?>
 
 <div class="container">
+    <h2><?= $_SESSION['success'] ?? ''; ?></h2>
+    <?php unset($_SESSION['success']); ?>
+
     <div class="row row-gap-4 my-5">
         <?php foreach ($movies as $movie) { ?>
             <div class="col-6 col-md-4 col-lg-3">

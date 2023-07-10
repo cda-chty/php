@@ -1,5 +1,7 @@
 <?php
 
+session_start(); // Permet d'utiliser les sessions
+
 /**
  * Permet de se connecter à la BDD
  */
