@@ -11,5 +11,7 @@
             "email": "matthieumota@gmail.com"
         }
     ],
-    "require": {}
+    "require-dev": {
+        "symfony/var-dumper": "^6.3"
+    }
 }
