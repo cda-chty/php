@@ -5,6 +5,7 @@ require 'vendor/autoload.php';
 use App\Calculator;
 use App\Car;
 use App\Cat;
+use App\DB;
 use App\ExoGeometry\Rectangle;
 use App\ExoGeometry\Square;
 
@@ -102,6 +103,22 @@ dump($bianca, $mina);
         $c->substract(4);
         $c->multiply(2)->substract(2)->divide(3);
         echo $c->result(); // 3
+    ?>
+
+    <h2>Exercice statique DB</h2>
+    <?php
+        dump(DB::select('select * from movie'));
+        dump(DB::selectOne('select * from movie where id = :id', ['id' => 1]));
+
+        DB::insert('INSERT INTO movie (title, released_at, description, duration, cover, id_category)
+        VALUES (:title, :released_at, :description, :duration, :cover, :category)', [
+            'title' => 'Test POO',
+            'released_at' => date('Y-m-d'),
+            'description' => 'Un test',
+            'duration' => 165,
+            'cover' => 'le-parrain.jpg',
+            'category' => 1,
+        ]);
     ?>
 </body>
 </html>
