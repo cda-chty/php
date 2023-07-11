@@ -5,6 +5,7 @@ require 'vendor/autoload.php';
 use App\Car;
 use App\Cat;
 use App\ExoGeometry\Rectangle;
+use App\ExoGeometry\Square;
 
 $bianca = new Cat('Bianca');
 $bianca->setFur('noir')->setFur('blanc');
@@ -76,6 +77,13 @@ dump($bianca, $mina);
         dump($r->isValid()); // true
         $r2 = new Rectangle(-10, 20);
         dump($r2->isValid()); // false
+    ?>
+
+    <h2>Exercice carré</h2>
+    <?php
+        $s = new Square(10);
+        echo $s->perimeter(); // 40
+        dump($r->isBiggerThan($s)); // false et utilisable sur les carrés ou rectangles
     ?>
 </body>
 </html>

@@ -4,7 +4,7 @@ namespace App\ExoGeometry;
 
 class Rectangle
 {
-    private int $width;
+    protected int $width;
     private int $height;
 
     public function __construct(
@@ -28,5 +28,10 @@ class Rectangle
     public function isValid(): bool
     {
         return $this->width > 0 && $this->height > 0;
+    }
+
+    public function isBiggerThan(Rectangle $form): bool
+    {
+        return $this->area() > $form->area();
     }
 }
