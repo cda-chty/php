@@ -19,4 +19,6 @@ abstract class Animal
         // static : la classe dans laquelle le code est exécuté
         return $this->name.' se déplace : '.self::class.', '.static::class;
     }
+
+    abstract public function breathe();
 }
