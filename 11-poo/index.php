@@ -2,6 +2,7 @@
 
 require 'vendor/autoload.php';
 
+use App\Calculator;
 use App\Car;
 use App\Cat;
 use App\ExoGeometry\Rectangle;
@@ -84,6 +85,15 @@ dump($bianca, $mina);
         $s = new Square(10);
         echo $s->perimeter(); // 40
         dump($r->isBiggerThan($s)); // false et utilisable sur les carrés ou rectangles
+    ?>
+
+    <h2>Exercice Calculator</h2>
+    <?php
+        $c = new Calculator();
+        $c->add(8)->add(2);
+        $c->substract(4);
+        $c->multiply(2)->substract(2)->divide(3);
+        echo $c->result(); // 3
     ?>
 </body>
 </html>
