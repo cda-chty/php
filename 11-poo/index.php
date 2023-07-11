@@ -10,8 +10,16 @@ use App\ExoGeometry\Square;
 
 $bianca = new Cat('Bianca');
 $bianca->setFur('noir')->setFur('blanc');
+dump(Cat::getCount());
 $mina = new Cat('Mina');
 $mina->setFur('noir');
+
+dump(Cat::$count);
+dump($bianca::$count);
+dump(Cat::getCount());
+dump($bianca->getCount());
+
+$g = Cat::garfield()->getName();
 
 dump($bianca, $mina);
 
